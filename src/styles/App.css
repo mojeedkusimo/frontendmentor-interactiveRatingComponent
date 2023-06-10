@@ -16,14 +16,42 @@ code {
 
 
 .App {
-  background-color: #636973;
+  background-color: #212832;
   min-height: 70vh;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin); */
+  border-radius: 3.25rem !important;
   color: white;
+}
+
+.icon-star {
+  background-color: #29333F;
+  border-radius: 15.25rem !important;
+}
+
+.content {
+  color: #6E7480;
+  font-weight: 500;
+}
+
+.number-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.number {
+  background-color: #29333F;
+  height: 15%;
+  width: 15%;
+  border-radius: 50%;
+  display: inline-block;
+  color: #5D6675;
+  font-weight: 900;
+}
+
+.button-container {
+  background-color: #FC7613;
+  color: white;
+  text-align: center;
+  border-radius: 3.25rem !important;
 }
 
 .App-logo {
