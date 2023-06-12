@@ -1,25 +1,48 @@
 import icon from "./images/icon-star.svg";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 function App() {
 
   const [numbers, setNumbers] = useState("");
+  const [clickedNum, setClickedNum] = useState(null);
+
   const numberList = () => {
     const numberFormat = [1,2,3,4,5].map((el) => {
-      <span className="p-4 number" id={el} onClick={() => {handleClick(el)}}>{el}</span>
+      return <span className="p-4 number" id={`el${el}`} key={el} onClick={() => {handleClick(el)}}>{el}</span>
     });
   
     setNumbers(numberFormat);
   }
 
   const handleClick = (el) => {
-    alert(el);
+    const choosenNum = document.querySelector(`#el${el}`);
+    let numberArray = document.querySelectorAll(".number");
+    // choosenNum.style.backgroundColor = "grey";
+    // choosenNum.style.color = "white";
+
+    for (let i = 1; i < numberArray.length; i++) {
+
+      if (numberArray[i].id == `el${i}`) {
+        choosenNum.classList.add("selected");
+      } else {
+        numberArray[i].classList.remove("selected");
+      }
+
+      console.log(numberArray[i].id);
+      console.log(`el${i}`);
+    }
+
+    setClickedNum(el);
   }
   
+  const handleSubmit = () => {
+    alert(`You selected ${clickedNum}`);
+  }
+
   useEffect(() => {
     numberList();
 
-  },0);
+  },[]);
 
   return (
     <div className="row">
@@ -33,7 +56,7 @@ function App() {
           <div className="number-container my-5">
               {numbers}
           </div>
-          <div className="button-container p-3">
+          <div className="button-container p-3" onClick={handleSubmit}>
             <span>SUBMIT</span>
           </div>
         </div>
